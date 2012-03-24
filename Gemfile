@@ -48,4 +48,5 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Twillo
+# gem 'twilio-rb', :git => "git://github.com/stevegraham/twilio-rb.git", :ref => "ac58b8674f064b31b4eb1ff39765e827aa92b99c"
 gem 'twilio-ruby'
