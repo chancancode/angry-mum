@@ -1,0 +1,6 @@
+= simple_form_for @alert, html: { class: 'form-horizontal' } do |form|
+  %fieldset
+    %legend Fix this reminder
+    = render 'form', form: form
+  .form-actions
+    = form.button :submit, "Poke me hard (again)", class: "btn-primary"

@@ -13,10 +13,9 @@
       - @alerts.each do |alert|
         %tr
           %td
-            = link_to alert.reason, url_for(alert, action: 'edit')
+            = link_to alert.reason, edit_alert_path(alert)
           %td
-            = distance_of_time_in_words(DateTime.now, alert.start)
-            = alert.start
+            = printed_timestamp alert.start
           %td
             Trivia and timeout and stuff
           %td
