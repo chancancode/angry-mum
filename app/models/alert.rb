@@ -16,4 +16,13 @@ class Alert < ActiveRecord::Base
     
     Rails.logger.info "Made phone call to #{self.fallback_phone_normalised}, response: #{response.inspect}"
   end
+  
+  def fallback_phone=(value)
+    super(value)
+    normalise_fallback_phone
+  end
+  
+  def normalise_fallback_phone
+    self.normalised_phone_normalised = fallback_phone.gsub(/[^0-9]/, '').gsub(/^1/, '')
+  end
 end
