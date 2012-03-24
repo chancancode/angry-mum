@@ -3,6 +3,7 @@ class Alert < ActiveRecord::Base
   
   validates :reason, presence: true
   validates :start, presence: true
+  validates :prompt, presence: true
   validates :fallback_name, presence: true
   validates :fallback_phone, presence: true
 

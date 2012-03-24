@@ -7,8 +7,9 @@
   = form.input_field :start, as: :string, type: :datetime
   %span.add-on
     %i.icon-calendar
+= form.input :prompt, as: 'radio_buttons', collection: [['Simple math problem', 'math'], ['Trivia prompt', 'trivia'], ['Any reply will do', 'reply']]
 = form.input :fallback_name, hint: "When you don't respond, who do we get to prompt you? Hint: Your mum."
-= form.input :fallback_phone, hint: "What is their phone number?"
+= form.input :fallback_phone, hint: "Honestly? Who raised you?"
 
 - content_for :page_js do
   :javascript
