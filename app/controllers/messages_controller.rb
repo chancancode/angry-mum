@@ -43,6 +43,23 @@ class MessagesController < ApplicationController
         
         Rails.logger.info response.text
         
+        user = User.normalise_and_find(params['From'])
+        
+        if user
+          alert = user.alerts.where(:sid => nil).order("start asc").limit(1)
+          
+          if alert.length == 1
+            alert = alert.first
+            
+            if @message.body.downcase.strip == 'b'
+              alert.sid = "CHECKED"
+              alert.save
+            else
+              alert.delay.call(alert_url(alert, :format => :xml))
+            end
+          end
+        end
+        
         format.xml { render :text => response.text }
       else
         raise "Can't save!"

@@ -16,6 +16,9 @@ class Alert < ActiveRecord::Base
     )
     
     Rails.logger.info "Made phone call to #{self.fallback_phone_normalised}, response: #{response.inspect}"
+    
+    self.sid = response.sid
+    self.save
   end
   
   def fallback_phone=(value)
