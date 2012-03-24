@@ -1,0 +1,26 @@
+.hero-unit
+  %h1 Good morning!
+
+- if @alerts.present?
+  %table.table.table-striped
+    %thead
+      %tr
+        %th What
+        %th When
+        %th How
+        %th Who
+    %tbody
+      - @alerts.each do |alert|
+        %tr
+          %td
+            = link_to alert.reason, url_for(alert, action: 'edit')
+          %td
+            = distance_of_time_in_words(DateTime.now, alert.start)
+            = alert.start
+          %td
+            Trivia and timeout and stuff
+          %td
+            = alert.fallback_name
+            = "(#{alert.fallback_phone})"
+
+= render 'new', alert: @alert

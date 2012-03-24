@@ -8,19 +8,24 @@ class UsersController < ApplicationController
     
     # Do we recnognise this number?
     if @user.valid?
-      user = User.where(normalised_phone: @user.normalised_phone)
+      user = User.where(normalised_phone: @user.normalised_phone).first
       if user.present?
-        current_user = user
+        self.current_user = user
         redirect_to alerts_path
         return
       end
     end
 
     if @user.save
-      current_user = @user
+      self.current_user = @user
       redirect_to alerts_path
     else
       render action: 'new'
     end
+  end
+  
+  def logout
+    self.current_user = nil
+    redirect_to :root
   end
 end

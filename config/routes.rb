@@ -1,5 +1,9 @@
 AngryMum::Application.routes.draw do
-  resources :users
+  resources :users do
+    collection do
+      get :logout
+    end
+  end
 
   resources :alerts
 
