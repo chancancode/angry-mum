@@ -3,6 +3,11 @@ class AlertsController < ApplicationController
   
   def index
     @alerts = current_user.alerts.all
+    
+    @pending_alerts = current_user.alerts.pending.all
+    @successful_alerts = current_user.alerts.successful.all
+    @failed_alerts = current_user.alerts.annoying.all
+
     @alert = current_user.alerts.new
   end
   

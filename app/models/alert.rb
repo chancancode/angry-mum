@@ -5,7 +5,15 @@ class Alert < ActiveRecord::Base
   validates :start, presence: true
   validates :fallback_name, presence: true
   validates :fallback_phone, presence: true
-  
+
+  scope :pending, conditions: { sid: nil }
+  scope :successful, conditions: { sid: 'CHECKED' }
+  scope :annoying, conditions: "sid IS NOT NULL AND sid != 'CHECKED'"
+
+  def sent?
+    sid.present?
+  end
+
   def call(url)    
     client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
     response = client.account.calls.create(
