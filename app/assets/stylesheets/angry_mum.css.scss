@@ -4,9 +4,26 @@
     @return #{$raw-css}
 }
 
+$colour1: #FF476C;
+$colour2: #FF7474;
+$colour3: #FFA49D;
+$colour4: #A8877E;
+$colour5: #3B3B3B;
+
+
+@import url(http://fonts.googleapis.com/css?family=Norican);
+@import url(http://fonts.googleapis.com/css?family=Imprima);
+
+$baseFontSize:          15px;
+$baseFontFamily:        "Imprima", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$baseLineHeight:        20px;
+
+$linkColor:             $colour2;
+$linkColorHover:        darken($linkColor, 15%) !default;
+
+
 @import "compass_twitter_bootstrap";
 @import "compass_twitter_bootstrap_responsive";
-
 
 
 /* css for timepicker */
@@ -16,3 +33,65 @@
 .ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Norican", "Imprima", sans-serif;
+}
+
+body {
+  background-color: $colour4;
+  background-image: url(http://themes.goodlayers.com/modernize/wp-content/themes/modernize/images/pattern/pattern-1.png);
+//  color: #333;
+//  font-family: "Imprima", sans-serif;
+}
+
+header {
+  .container {
+    z-index: 20;
+    .header {
+      position: relative;
+      text-align: right;
+      padding: 10px;
+      color: white;
+    }
+  }
+}
+
+.logo {
+  font-family: "Norican", sans-serif;
+  color: $colour1;
+  position: absolute;
+  left: 30px;
+  top: 0px;
+  font-size: 40px;
+  line-height: 45px;
+  text-shadow: 0 0 3px #333;
+  font-weight: bold;
+}
+
+body > .container {
+  background-color: white;
+  box-shadow: 0 0 3px 0 $colour1;
+  padding-bottom: 40px;
+}
+
+.hero-unit {
+  background-color: $colour3;
+  border-radius: 0;
+  color: $colour5;
+  h1 {
+    text-shadow: 0px 1px 2px lighten($colour3, 50%);
+  }
+}
+
+footer {
+  .container {
+    margin-top: 3px;
+    background-color: $colour5;
+    color: white;
+  }
+  .footer {
+    padding: 50px;
+    text-align: center;
+  }
+}

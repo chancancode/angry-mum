@@ -1,5 +1,6 @@
-.hero-unit
-  %h1 Good morning!
+- content_for :hero do
+  .hero-unit
+    %h1 Good morning!
 
 - if @alerts.present?
   %table.table.table-striped
@@ -22,4 +23,21 @@
             = alert.fallback_name
             = "(#{alert.fallback_phone})"
 
-= render 'new', alert: @alert
+  %a#new_alert_trigger.btn.btn-primary.btn-large{ href: "#" }
+    Set a new alert
+  #new_alert_container{ style: "display: none" }
+    = render 'new', alert: @alert
+
+  - content_for :page_js do
+    :javascript
+      jQuery(function() {
+        $('#new_alert_trigger').click(function(event) {
+          $(this).fadeOut('fast', function() {
+            $('#new_alert_container').slideDown();
+          });
+        });
+      
+      });
+
+- else
+  = render 'new', alert: @alert
