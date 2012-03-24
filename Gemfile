@@ -50,3 +50,7 @@ gem 'jquery-rails'
 # Twillo
 # gem 'twilio-rb', :git => "git://github.com/stevegraham/twilio-rb.git", :ref => "ac58b8674f064b31b4eb1ff39765e827aa92b99c"
 gem 'twilio-ruby'
+
+# DJ
+gem 'daemons'
+gem 'delayed_job_active_record'
