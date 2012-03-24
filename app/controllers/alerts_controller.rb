@@ -1,5 +1,5 @@
 class AlertsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, :except => [:show]
   
   def index
     @alerts = current_user.alerts.all
@@ -12,6 +12,28 @@ class AlertsController < ApplicationController
   
   def edit
     @alert = current_user.alerts.find params[:id]
+  end
+  
+  def show
+    @alert = Alert.find(params[:id])
+    
+    respond_to do |format|
+      if @alert        
+        response = Twilio::TwiML::Response.new do |r|
+          r.Say "Hi #{@alert.fallback_name}, " +
+                "#{@alert.user.name} needs to wake up for #{@alert.reason} right about now, " +
+                "but it looks like #{@alert.user.name} is still sleeping... can you help?", :voice => 'man'
+          r.Dial @alert.user.normalised_phone, :callerId => TWILIO_CALLER_ID
+          r.Say "Thank you for your help #{@alert.fallback_name}, have a nice day!", :voice => 'man'
+        end
+        
+        Rails.logger.info response.text
+        
+        format.xml { render :text => response.text }
+      else
+        raise "Not found!"
+      end
+    end
   end
   
   def create

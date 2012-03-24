@@ -6,6 +6,17 @@ class Alert < ActiveRecord::Base
   validates :fallback_name, presence: true
   validates :fallback_phone, presence: true
   
+  def call(url)    
+    client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
+    response = client.account.calls.create(
+      :from => TWILIO_CALLER_ID,
+      :to => self.fallback_phone_normalised,
+      :url => url,
+      :method => 'GET'
+    )
+    
+    Rails.logger.info "Made phone call to #{self.fallback_phone_normalised}, response: #{response.inspect}"
+  end
   
   def fallback_phone=(value)
     super(value)
@@ -13,7 +24,6 @@ class Alert < ActiveRecord::Base
   end
   
   def normalise_fallback_phone
-    self.normalised_phone_normalised = fallback_phone.gsub(/[^0-9]/, '').gsub(/^1/, '')
+    self.fallback_phone_normalised = fallback_phone.gsub(/[^0-9]/, '').gsub(/^1/, '')
   end
-  
 end

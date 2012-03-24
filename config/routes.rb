@@ -5,7 +5,7 @@ AngryMum::Application.routes.draw do
     end
   end
 
-  resources :alerts
+  resources :alerts, :only => [:index, :new, :show, :edit, :create]
 
   resources :messages, :only => [:index, :show, :create]
 
