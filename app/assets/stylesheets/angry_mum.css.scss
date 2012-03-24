@@ -1,0 +1,9 @@
+// temporary fix for compass_twitter_bootstrap
+// https://github.com/vwall/compass-twitter-bootstrap/issues/40
+@function e($raw-css) {
+    @return #{$raw-css}
+}
+
+@import "compass_twitter_bootstrap";
+@import "compass_twitter_bootstrap_responsive";
+

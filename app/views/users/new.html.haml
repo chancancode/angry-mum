@@ -1,0 +1,7 @@
+= simple_form_for @user, html: { class: 'form-horizontal' } do |form|
+  %fieldset
+    %legend Who might you be?
+    = form.input :name
+    = form.input :phone
+    .form-actions
+      = form.submit ""

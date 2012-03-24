@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  start: 2012-03-24 12:59:36
+  timeout: 1
+  fallback_name: MyString
+  fallback_phone: MyString
+  fallback_phone_normalised: MyString
+
+two:
+  user_id: 1
+  start: 2012-03-24 12:59:36
+  timeout: 1
+  fallback_name: MyString
+  fallback_phone: MyString
+  fallback_phone_normalised: MyString
