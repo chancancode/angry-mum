@@ -1,0 +1,11 @@
+= form.input :reason, hint: "Why are you setting yourself this reminder? Be polite - your mum might have to hear this."
+#timewarning{ style: "display: none" }
+  .alert.alert-danger.alert-box
+    %h4.alert-heading Are you so sure about this?
+    %p Your mum might not like to be disturbed at this time. You really want to make sure you respond in time.
+= form.input :start, wrapper: :append, hint: "When do you need to be reminded of this?" do
+  = form.input_field :start, as: :string, type: :datetime
+  %span.add-on
+    %i.icon-calendar
+= form.input :fallback_name, hint: "When you don't respond, who do we get to prompt you? Hint: Your mum."
+= form.input :fallback_phone, hint: "What is their phone number?"

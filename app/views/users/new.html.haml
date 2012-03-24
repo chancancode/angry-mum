@@ -1,0 +1,7 @@
+.hero-unit
+  %h1 Let's do this thing
+
+= simple_form_for @user, html: { class: 'form-horizontal' } do |form|
+  = render 'form', form: form
+  .form-actions
+    = form.button :submit, "That's who I be", class: 'btn-primary'
