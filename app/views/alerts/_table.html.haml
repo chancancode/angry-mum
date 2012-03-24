@@ -1,0 +1,22 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th What
+      %th When
+      %th How
+      %th Who
+  %tbody
+    - @alerts.each do |alert|
+      %tr
+        %td
+          - if alert.sent?
+            = alert.reason
+          - else
+            = link_to alert.reason, edit_alert_path(alert)
+        %td
+          = printed_timestamp alert.start
+        %td
+          Trivia and timeout and stuff
+        %td
+          = alert.fallback_name
+          = "(#{alert.fallback_phone})"

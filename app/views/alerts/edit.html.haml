@@ -3,4 +3,6 @@
     %legend Fix this reminder
     = render 'form', form: form
   .form-actions
-    = form.button :submit, "Poke me hard (again)", class: "btn-primary"
+    = form.button :submit, "I still promise to not anger my mother", class: "btn-primary"
+    %a.btn{ href: alerts_path }
+      Cancel

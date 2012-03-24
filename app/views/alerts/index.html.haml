@@ -2,29 +2,12 @@
   .hero-unit
     %h1 Good morning!
 
-- if @alerts.present?
-  %table.table.table-striped
-    %thead
-      %tr
-        %th What
-        %th When
-        %th How
-        %th Who
-    %tbody
-      - @alerts.each do |alert|
-        %tr
-          %td
-            = link_to alert.reason, edit_alert_path(alert)
-          %td
-            = printed_timestamp alert.start
-          %td
-            Trivia and timeout and stuff
-          %td
-            = alert.fallback_name
-            = "(#{alert.fallback_phone})"
+- if @pending_alerts.present?
+  %h2 Upcoming opportunities to anger your mother
+  = render 'table', alerts: @pending_alerts
 
   %a#new_alert_trigger.btn.btn-primary.btn-large{ href: "#" }
-    Set a new alert
+    Create a new opportunity to anger your mother
   #new_alert_container{ style: "display: none" }
     = render 'new', alert: @alert
 
@@ -36,8 +19,16 @@
             $('#new_alert_container').slideDown();
           });
         });
-      
       });
 
-- else
+- else 
   = render 'new', alert: @alert
+
+- if @failed_alerts.present?
+  %h2 Times when you angered your mother
+  = render 'table', alerts: @failed_alerts
+  
+- if @successful_alerts.present?
+  %h2 Previous times where you didn't anger your mother
+  = render 'table', alerts: @successful_alerts
+
