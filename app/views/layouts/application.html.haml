@@ -14,14 +14,29 @@
     / %pre= session.inspect
     / %h5 Cookies
     / %pre= cookies.inspect
-    .container
-      %header
-        - if logged_in?
-          Logged in as
-          = current_user.name
-          
-          = link_to "Logout", logout_users_path
+    %header
+      .container
+        .header
+          .logo
+            AngryMum
+          .login
+            - if logged_in?
+              Logged in as
+              %b= current_user.name
     
-      = yield
+              = link_to "Logout", logout_users_path
+            - else
+              Signup to set an alert and NOT anger your mother now!
+
+    .container
+      = yield :hero
+      .row
+        .span10.offset1
+          = yield
+
+    %footer
+      .container
+        .footer
+          Not brought to you by any angry mothers. Not directly, at least.
 
     = yield :page_js
