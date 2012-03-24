@@ -2,8 +2,11 @@
 %html
   %head
     %title AngryMum
+    %link{ href: "/css/Aristo/Aristo.css", media: "all", rel: "stylesheet", type: "text/css" }/
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
+    = javascript_include_tag "/js/jquery-ui-1.8.18.custom.min"
+    = javascript_include_tag "/js/datetimepicker"
     = csrf_meta_tags
 
   %body
@@ -20,3 +23,5 @@
           = link_to "Logout", logout_users_path
     
       = yield
+
+    = yield :page_js

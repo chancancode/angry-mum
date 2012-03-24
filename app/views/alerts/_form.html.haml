@@ -9,3 +9,9 @@
     %i.icon-calendar
 = form.input :fallback_name, hint: "When you don't respond, who do we get to prompt you? Hint: Your mum."
 = form.input :fallback_phone, hint: "What is their phone number?"
+
+- content_for :page_js do
+  :javascript
+    jQuery(function() {
+      $('#alert_start').datetimepicker({ stepMinutes: 5, ampm: false, timeFormat: 'hh:mm', dateFormat: 'yy-mm-dd', minDate: 0, maxDate: '+7' });
+    });
