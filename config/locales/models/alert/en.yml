@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      attributes:
+        alert:
+          start: "Reminder time"
+          fallback_name: "Emergency contact"
+          fallback_phone: "Their phone"
+        

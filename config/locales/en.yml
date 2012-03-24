@@ -3,3 +3,13 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        name: "Your name"
+        phone: "Your phone number"
+      alert:
+        start: "Reminder time"
+        fallback_name: "Emergency contact"
+        fallback_phone: "Their phone"
+  
