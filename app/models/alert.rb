@@ -6,6 +6,12 @@ class Alert < ActiveRecord::Base
   validates :fallback_name, presence: true
   validates :fallback_phone, presence: true
   
+  after_create :schedule
+  
+  def schedule
+    Message.question(self.fallback_phone_normalised).delay.deliver
+  end
+  
   def call(url)    
     client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
     response = client.account.calls.create(

@@ -26,13 +26,6 @@ ActiveRecord::Schema.define(:version => 20120324224132) do
     t.string   "sid"
   end
 
-  create_table "calls", :force => true do |t|
-    t.string   "sid"
-    t.integer  "alert_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
