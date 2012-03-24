@@ -3,6 +3,8 @@ AngryMum::Application.routes.draw do
 
   resources :alerts
 
+  resources :messages, :only => [:index, :show, :create]
+
   root to: "users#new"
   
   # The priority is based upon order of creation:

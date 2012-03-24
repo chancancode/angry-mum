@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  incoming: false
+  from: MyString
+  to: MyString
+  body: MyString
+
+two:
+  incoming: false
+  from: MyString
+  to: MyString
+  body: MyString

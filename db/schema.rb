@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324194103) do
+ActiveRecord::Schema.define(:version => 20120324195936) do
+
+  create_table "alerts", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "start"
+    t.integer  "timeout"
+    t.string   "fallback_name"
+    t.string   "fallback_phone"
+    t.string   "fallback_phone_normalised"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.boolean  "incoming"
+    t.string   "from"
+    t.string   "to"
+    t.string   "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "sid"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
