@@ -9,7 +9,7 @@ $colour2: #FF7474;
 $colour3: #FFA49D;
 $colour4: #A8877E;
 $colour5: #3B3B3B;
-
+$borderRadius: 40px;
 
 @import url(http://fonts.googleapis.com/css?family=Norican);
 @import url(http://fonts.googleapis.com/css?family=Imprima);
@@ -70,14 +70,15 @@ header {
 }
 
 body > .container {
+  border-radius: $borderRadius $borderRadius 0 0;
   background-color: white;
   box-shadow: 0 0 3px 0 $colour1;
   padding-bottom: 40px;
 }
 
 .hero-unit {
+  border-radius: $borderRadius $borderRadius 0 0;
   background-color: $colour3;
-  border-radius: 0;
   color: $colour5;
   h1 {
     text-shadow: 0px 1px 2px lighten($colour3, 50%);
@@ -89,6 +90,7 @@ footer {
     margin-top: 3px;
     background-color: $colour5;
     color: white;
+    border-radius: 0 0 $borderRadius $borderRadius;
   }
   .footer {
     padding: 50px;
