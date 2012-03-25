@@ -30,9 +30,10 @@
 
     .container
       = yield :hero
-      .row
-        .span10.offset1
-          = yield
+      .container-inner
+        .row
+          .span10.offset1
+            = yield
 
     %footer
       .container

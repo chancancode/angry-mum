@@ -97,3 +97,43 @@ footer {
     text-align: center;
   }
 }
+
+@media (max-width: 767px) {
+  .logo {
+    position: static;
+  }
+  
+  header {
+    .container {
+      .header {
+        margin: 5px 0;
+        position: static;
+        text-align: left;
+        padding: 10px;
+        color: white;
+      }
+    }
+  }
+  
+  .hero-unit {
+    padding: 20px;
+    h1 {
+      
+      font-size: 30px;
+    }
+  }
+  
+  
+  // GRID & CONTAINERS
+  // -----------------
+  // Remove width from containers
+  .container {
+    width: auto;
+    padding: 0;
+    margin: 0 5px
+  }
+  
+  .container-inner {
+    padding: 10px;
+  }
+}
