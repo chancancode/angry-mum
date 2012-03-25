@@ -5,13 +5,15 @@ class Message < ActiveRecord::Base
       incoming: false,
       sid: nil,
       to: to,
-      from: TWILIO_CALLER_ID,
+      from: TWILIO_CALLER_ID_SMS,
       body: "1+1 equals... A. 1 ; B. 2 ; C. 3"
     })
   end
   
   def deliver
     return if self.incoming || self.delivered
+    
+    # sleep 30
     
     client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
     response = client.account.sms.messages.create(

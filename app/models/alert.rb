@@ -6,10 +6,16 @@ class Alert < ActiveRecord::Base
   validates :prompt, presence: true
   validates :fallback_name, presence: true
   validates :fallback_phone, presence: true
-
+  
   scope :pending, conditions: { sid: nil }
   scope :successful, conditions: { sid: 'CHECKED' }
   scope :annoying, conditions: "sid IS NOT NULL AND sid != 'CHECKED'"
+    
+  after_create :schedule
+  
+  def schedule
+    Message.question(self.fallback_phone_normalised).delay.deliver
+  end
 
   def sent?
     sid.present?
