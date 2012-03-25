@@ -25,10 +25,12 @@
   = render 'new', alert: @alert
 
 - if @failed_alerts.present?
+  %p &nbsp;
   %h2 Times when you angered your mother
   = render 'table', alerts: @failed_alerts
   
 - if @successful_alerts.present?
+  %p &nbsp;
   %h2 Previous times where you didn't anger your mother
   = render 'table', alerts: @successful_alerts
 
